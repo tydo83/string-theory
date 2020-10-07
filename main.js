@@ -148,38 +148,34 @@ function camelCase(str) {
   let newStr = '';
   for (let i = 0; i < str.length; i++) {
     if(str[i] === ' ') {
-      newStr = newStr + str[i]
+      str[i] = ''; 
     }
-    if(str[i-1] === ' ') {
-      newStr = newStr + str[i].toUpperCase();
+    else if(str[i-1] === ' ') {
+      newStr += str[i].toUpperCase();
     }
-    else {
+    else { 
       newStr += str[i].toLowerCase();
-    }
-  }
-    return newStr;
-}
-a = camelCase('oh Hello')
-a;
-b = camelCase('well yeah of course');
-b;
-
-function crazyCase2ReturnOfCrazyCase(str) {
-  let newStr = '';
-  for(let i = 0; i < str.length; i++) {
-    if(i % 2 == 1) {
-      newStr = newStr + str[i].toUpperCase();
-    }
-    else if(i % 2 == 0) {
-      newStr = newStr + str[i].toLowerCase();
     }
   }
   return newStr;
 }
 
-a =  crazyCase2ReturnOfCrazyCase('multiple words here');
-a;
-
+function crazyCase2ReturnOfCrazyCase(str) {
+  let newStr = '';
+  let wordsCounter = 0;
+  for(let i = 0; i < str.length; i++) {
+    if(str[i] !== ' ') {
+      wordsCounter++;
+    }
+    if(wordsCounter % 2 == 0) {
+      newStr += str[i].toUpperCase();
+    }
+    else if(wordsCounter % 2 == 1) {
+      newStr += str[i].toLowerCase();
+    }
+  }
+  return newStr;
+}
 
 /********************************************
  * CODE DOWN HERE IS FOR INTERNAL USE ONLY. *
