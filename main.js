@@ -104,11 +104,18 @@ function reverse(str) {
 
 function onlyVowels(str) {
   let newStr = '';
-  let vowels = 'aeiouAEIOU';
+  // let vowels = 'aeiouAEIOU';
+  // for(let i = 0; i < str.length; i++) {
+  //   if(vowels.includes(str[i])) 
+  //   newStr = newStr + str[i];
+  // }
   for(let i = 0; i < str.length; i++) {
-    if(vowels.includes(str[i])) 
-    newStr = newStr + str[i];
-  }
+    if(str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || 
+      str[i] == 'u' || str[i] == 'A' || str[i] == 'E' || str[i] == 'I' || 
+      str[i] == 'O' || str[i] == 'U') {
+        newStr += str[i];
+      }
+    }
   return newStr;
 }
 
@@ -128,37 +135,53 @@ function crazyCase(str) {
 function titleCase(str) {
   let newStr = '';
   for(let i = 0; i < str.length; i++) {
-  newStr = newStr + str[i];
-  
+    if(i == 0 || str[i-1] === ' ') {
+      newStr = newStr + str[i].toUpperCase()
+    }  
+    else
+      newStr = newStr + str[i].toLowerCase()
+    }
+    return newStr;
+  }
+
+function camelCase(str) {
+  let newStr = '';
+  for (let i = 0; i < str.length; i++) {
+    if(str[i] === ' ') {
+      newStr = newStr + str[i]
+    }
+    if(str[i-1] === ' ') {
+      newStr = newStr + str[i].toUpperCase();
+    }
+    else {
+      newStr += str[i].toLowerCase();
+    }
+  }
+    return newStr;
+}
+a = camelCase('oh Hello')
+a;
+b = camelCase('well yeah of course');
+b;
+
+function crazyCase2ReturnOfCrazyCase(str) {
+  let newStr = '';
+  for(let i = 0; i < str.length; i++) {
+    if(i % 2 == 1) {
+      newStr = newStr + str[i].toUpperCase();
+    }
+    else if(i % 2 == 0) {
+      newStr = newStr + str[i].toLowerCase();
+    }
   }
   return newStr;
 }
-a = titleCase('return of the king');
+
+a =  crazyCase2ReturnOfCrazyCase('multiple words here');
 a;
 
 
-
-
-function camelCase(str) {
-
-
-}
-
-function crazyCase2ReturnOfCrazyCase(str){}
-
-
-
-
-
-
-
-
-
-
-
-
-
- /********************************************
+/********************************************
  * CODE DOWN HERE IS FOR INTERNAL USE ONLY. *
  *           PLEASE DON'T TOUCH!            *
  ********************************************/
